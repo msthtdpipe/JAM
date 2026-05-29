@@ -1,17 +1,16 @@
 const express = require('express');
 const cors = require('cors');
+const path = require('path');
+
 const app = express();
+
+app.set('trust proxy', false);
 
 app.use(cors());
 app.use(express.json());
 
+app.use(express.static(path.join(__dirname, '../public')));
 
 app.use('/api/canciones', require('./routes/canciones'));
 
-// Ruta para la raíz (Home)
-app.get('/', (req, res) => {
-    res.send('<h1>FUNCIONA</h1>');
-});
-
 module.exports = app;
-app.set('trust proxy', false);

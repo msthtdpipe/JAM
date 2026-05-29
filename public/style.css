@@ -1,0 +1,159 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Segoe UI,sans-serif;
+    background:#121212;
+    color:white;
+}
+
+.hero{
+    background:linear-gradient(135deg,#004f45,#0b0b0b);
+    padding:60px 10%;
+}
+
+.navbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.logo{
+    font-size:2rem;
+    font-weight:bold;
+}
+
+.nav-actions{
+    display:flex;
+    gap:20px;
+    align-items:center;
+}
+
+.nav-actions a{
+    color:white;
+    text-decoration:none;
+}
+
+.hero-content{
+    margin-top:60px;
+}
+
+.hero-content h1{
+    font-size:3rem;
+    margin:15px 0;
+}
+
+.btn-primary{
+    display:inline-block;
+    margin-top:20px;
+    padding:12px 20px;
+    background:#00c896;
+    color:white;
+    text-decoration:none;
+    border-radius:8px;
+}
+
+.filters{
+    padding:40px 10%;
+}
+
+.filter-box{
+    display:flex;
+    gap:10px;
+    margin-top:20px;
+}
+
+.filter-box input,
+.filter-box select{
+    padding:10px;
+    border:none;
+    border-radius:8px;
+}
+
+.songs-grid{
+    padding:20px 10%;
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(250px,1fr));
+    gap:20px;
+}
+
+.song-card{
+    background:#1f1f1f;
+    border-radius:12px;
+    padding:15px;
+}
+
+.song-card img{
+    width:100%;
+    height:200px;
+    object-fit:cover;
+    border-radius:10px;
+}
+
+.song-card button{
+    margin-top:10px;
+    padding:10px;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+.admin-panel,
+.support{
+    padding:40px 10%;
+}
+
+.admin-actions{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+    margin-top:15px;
+}
+
+.admin-actions button,
+.support button{
+    padding:10px 15px;
+    border:none;
+    border-radius:8px;
+    background:#00c896;
+    color:white;
+}
+
+.support form{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    margin-top:20px;
+}
+
+.support input,
+.support textarea,
+.support select{
+    padding:10px;
+}
+
+.player{
+    position:fixed;
+    bottom:0;
+    width:100%;
+    background:#181818;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px;
+}
+
+.player-info{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.player-info img{
+    width:50px;
+    height:50px;
+    border-radius:8px;
+}
