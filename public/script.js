@@ -144,7 +144,7 @@ volumeBar.addEventListener("input", () => {
     volumeIcon.textContent = "🔉";
   } else if (volumeBar.value < 0.75) {
     volumeIcon.textContent = "🔊";
-  } 
+  }
 });
 const volumeIcon = document.getElementById("volumeIcon");
 
@@ -177,36 +177,31 @@ themeBtn.addEventListener("click", () => {
   }
 });
 
-const supportForm = document.getElementById("supportForm");
+const adminBtn = document.getElementById("adminBtn");
+const adminPanel = document.getElementById("adminPanel");
 
-supportForm.addEventListener("submit", async (e) => {
-  e.preventDefault();
+adminBtn.addEventListener("click", () => {
 
-  const reporte = {
-    cancion_id: null,
-    tipo: document.getElementById("supportType").value,
-    descripcion: document.getElementById("supportMessage").value
-  };
+  const clave = prompt("Ingrese la clave de administrador");
 
-  try {
+  if (clave === "MANTECA.2026") {
 
-    const res = await fetch("/api/reportes", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(reporte)
-    });
+    adminPanel.style.display = "block";
 
-    const data = await res.json();
+    alert("Acceso concedido");
 
-    alert(data.mensaje);
+  } else {
 
-    supportForm.reset();
+    alert("Clave incorrecta");
 
-  } catch (err) {
-    alert("Error al enviar reporte");
   }
+});
+
+const logoutBtn = document.getElementById("logoutAdmin");
+
+logoutBtn.addEventListener("click", () => {
+  localStorage.removeItem("admin");
+  adminPanel.style.display = "none";
 });
 
 cargarCanciones();

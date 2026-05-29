@@ -16,7 +16,8 @@
             </div>
             <div class="nav-actions">
                 <a href="#catalogo">Catálogo</a>
-                <a href="#soporte">Soporte</a>
+                <Button id="adminBtn">Administración</Button>
+                <Button id="logoutAdmin">Cerrar administración</Button>
                 <button id="themeBtn">☾</button>
             </div>
         </nav>
@@ -46,7 +47,7 @@
             <p>Cargando canciones...</p>
         </section>
 
-        <section class="admin-panel">
+        <section class="admin-panel" id="adminPanel" style="display:none;">
             <h2>Panel de administrador</h2>
             <p>Gestión visual de contenido para subir, editar o eliminar canciones y artistas.</p>
 
@@ -57,24 +58,6 @@
                 <button>Gestionar artistas</button>
             </div>
         </section>
-
-        <form id="supportForm">
-
-            <select id="supportType" required>
-                <option value="">Tipo de reporte</option>
-                <option value="Error de reproducción">Error de reproducción</option>
-                <option value="Problema de descarga">Problema de descarga</option>
-                <option value="Canción incorrecta">Canción incorrecta</option>
-                <option value="Otro">Otro</option>
-            </select>
-
-            <input type="text" id="supportMessage" placeholder="Descripción del problema..." required maxlength="200">
-            
-            <button type="submit">
-                Enviar reporte
-            </button>
-
-        </form>
 
         <footer class="player">
             <div class="player-info">
