@@ -12,5 +12,7 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, '../public')));
 
 app.use('/api/canciones', require('./routes/canciones'));
+app.use('/api/reportes', require('./routes/reportes'));
+app.use('/api/generos', require('./routes/generos'));
 
 module.exports = app;

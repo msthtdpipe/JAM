@@ -1,103 +1,106 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>JAM | Just Audio Music</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JAM | Just Audio Music</title>
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-  <header class="hero">
-    <nav class="navbar">
-      <div class="logo">JAM</div>
-      <div class="nav-actions">
-        <a href="#catalogo">Catálogo</a>
-        <a href="#soporte">Soporte</a>
-        <button id="themeBtn">🌙</button>
-      </div>
-    </nav>
+    <header class="hero">
+        <nav class="navbar">
+            <div class="logo">
+                <img id="logoImg" src="foto1.png" alt="JAM">
+            </div>
+            <div class="nav-actions">
+                <a href="#catalogo">Catálogo</a>
+                <a href="#soporte">Soporte</a>
+                <button id="themeBtn">☾</button>
+            </div>
+        </nav>
 
-    <section class="hero-content">
-      <p class="badge">Música libre de derechos</p>
-      <h1>Just Audio Music</h1>
-      <p>
-        Escucha, busca y descarga canciones MP3 libres de derechos para tus proyectos audiovisuales.
-      </p>
-      <a href="#catalogo" class="btn-primary">Explorar canciones</a>
-    </section>
-  </header>
+        <section class="hero-content">
+            <p class="badge">Música libre de derechos</p>
+            <h1>Just Audio Music</h1>
+            <p>
+                Escucha, busca y descarga canciones MP3 libres de derechos para tus proyectos audiovisuales.
+            </p>
+            <a href="#catalogo" class="btn-primary">Explorar canciones</a>
+        </section>
+    </header>
 
-  <main>
-    <section class="filters" id="catalogo">
-      <h2>Catálogo musical</h2>
-      <div class="filter-box">
-        <input type="text" id="searchInput" placeholder="Buscar por canción, artista o álbum...">
-        <select id="genreFilter">
-          <option value="">Todos los géneros</option>
-        </select>
-      </div>
-    </section>
+    <main>
+        <section class="filters" id="catalogo">
+            <h2>Catálogo musical</h2>
+            <div class="filter-box">
+                <input type="text" id="searchInput" placeholder="Buscar por canción, artista o álbum...">
+                <select id="genreFilter">
+                    <option value="">Todos los géneros</option>
+                </select>
+            </div>
+        </section>
 
-    <section id="songsContainer" class="songs-grid">
-      <p>Cargando canciones...</p>
-    </section>
+        <section id="songsContainer" class="songs-grid">
+            <p>Cargando canciones...</p>
+        </section>
 
-    <section class="admin-panel">
-      <h2>Panel de administrador</h2>
-      <p>Gestión visual de contenido para subir, editar o eliminar canciones y artistas.</p>
+        <section class="admin-panel">
+            <h2>Panel de administrador</h2>
+            <p>Gestión visual de contenido para subir, editar o eliminar canciones y artistas.</p>
 
-      <div class="admin-actions">
-        <button>Subir canción</button>
-        <button>Editar canción</button>
-        <button>Eliminar canción</button>
-        <button>Gestionar artistas</button>
-      </div>
-    </section>
+            <div class="admin-actions">
+                <button>Subir canción</button>
+                <button>Editar canción</button>
+                <button>Eliminar canción</button>
+                <button>Gestionar artistas</button>
+            </div>
+        </section>
 
-    <section class="support" id="soporte">
-      <h2>Soporte</h2>
-      <p>Reporta problemas con canciones, descargas o funcionamiento de la plataforma.</p>
+        <form id="supportForm">
 
-      <form id="supportForm">
-        <input type="text" placeholder="Tu nombre" required>
-        <input type="email" placeholder="Tu correo" required>
-        <select required>
-          <option value="">Tipo de reporte</option>
-          <option>Falla de reproducción</option>
-          <option>Problema de descarga</option>
-          <option>Canción incorrecta</option>
-          <option>Otro</option>
-        </select>
-        <textarea placeholder="Describe el problema..." required></textarea>
-        <button type="submit">Enviar reporte</button>
-      </form>
-    </section>
-  </main>
+            <select id="supportType" required>
+                <option value="">Tipo de reporte</option>
+                <option value="Error de reproducción">Error de reproducción</option>
+                <option value="Problema de descarga">Problema de descarga</option>
+                <option value="Canción incorrecta">Canción incorrecta</option>
+                <option value="Otro">Otro</option>
+            </select>
 
-  <footer class="player">
-    <div class="player-info">
-      <img id="playerCover" src="" alt="Portada">
-      <div>
-        <strong id="playerTitle">Selecciona una canción</strong>
-        <p id="playerArtist">JAM</p>
-      </div>
-    </div>
+            <textarea id="supportMessage" placeholder="Describe el problema..." required></textarea>
 
-    <div class="player-controls">
-      <button id="prevBtn">⏮</button>
-      <button id="playPauseBtn">▶</button>
-      <button id="nextBtn">⏭</button>
-      <input type="range" id="progressBar" value="0" min="0" max="100">
-    </div>
+            <button type="submit">
+                Enviar reporte
+            </button>
 
-    <div class="volume-box">
-      <span>🔊</span>
-      <input type="range" id="volumeBar" min="0" max="1" step="0.01" value="1">
-    </div>
+        </form>
 
-    <audio id="audioPlayer"></audio>
-  </footer>
+        <footer class="player">
+            <div class="player-info">
+                <img id="playerCover" src="" alt="Portada">
+                <div>
+                    <strong id="playerTitle">Selecciona una canción</strong>
+                    <p id="playerArtist">JAM</p>
+                </div>
+            </div>
 
-  <script src="script.js"></script>
+            <div class="player-controls">
+                <button id="prevBtn">⏮</button>
+                <button id="playPauseBtn">▶</button>
+                <button id="nextBtn">⏭</button>
+                <input type="range" id="progressBar" value="0" min="0" max="100">
+            </div>
+
+            <div class="volume-box">
+                <span id="volumeIcon">🔊</span>
+                <input type="range" id="volumeBar" min="0" max="1" step="0.01" value="1">
+            </div>
+
+            <audio id="audioPlayer"></audio>
+        </footer>
+
+        <script src="script.js"></script>
 </body>
+
 </html>
