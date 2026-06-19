@@ -4,6 +4,10 @@ const genreFilter = document.getElementById("genreFilter");
 
 const audio = document.getElementById("audioPlayer");
 const playPauseBtn = document.getElementById("playPauseBtn");
+const prevBtn = document.getElementById("prevBtn"); 
+const nextBtn = document.getElementById("nextBtn");
+
+
 const progressBar = document.getElementById("progressBar");
 const volumeBar = document.getElementById("volumeBar");
 
@@ -64,7 +68,6 @@ function mostrarCanciones(lista) {
 
         <div class="song-meta">
           <p><strong>Artista:</strong> ${c.artista || "Desconocido"}</p>
-          <p><strong>Álbum:</strong> ${c.album || "Sin álbum"}</p>
           <p><strong>Género:</strong> ${c.genero || "Sin género"}</p>
           <p><strong>Duración:</strong> ${formatearDuracion(c.duracion_seg)}</p>
         </div>
@@ -85,8 +88,8 @@ function filtrarCanciones() {
   const filtradas = canciones.filter(c => {
     const coincideTexto =
       c.titulo?.toLowerCase().includes(texto) ||
-      c.artista?.toLowerCase().includes(texto) ||
-      c.album?.toLowerCase().includes(texto);
+      c.artista?.toLowerCase().includes(texto);
+
 
     const coincideGenero = genero === "" || c.genero === genero;
 
@@ -105,7 +108,7 @@ function reproducirCancion(index) {
 
   playerTitle.textContent = c.titulo;
   playerArtist.textContent = c.artista || "Artista desconocido";
-  playerCover.src = c.portada_url || "https://via.placeholder.com/300";
+  playerCover.src = c.portada_url || "Portada no disponible";
 
   playPauseBtn.textContent = "⏸";
 }
@@ -122,6 +125,23 @@ playPauseBtn.addEventListener("click", () => {
   }
 });
 
+nextBtn.addEventListener("click", () => {
+  if (cancionActual === null) return;
+
+  cancionActual = (cancionActual + 1) % canciones.length;
+  reproducirCancion(cancionActual);
+});
+
+prevBtn.addEventListener("click", () => {
+  if (cancionActual === null) return;
+  cancionActual = (cancionActual - 1 + canciones.length) % canciones.length; // PARA EVITAR QUE VAYA NUM NEGATIVO
+  reproducirCancion(cancionActual);
+});
+
+
+
+
+
 audio.addEventListener("timeupdate", () => {
   if (!audio.duration) return;
 
@@ -135,6 +155,7 @@ progressBar.addEventListener("input", () => {
   audio.currentTime = (progressBar.value / 100) * audio.duration;
 });
 
+const volumeIcon = document.getElementById("volumeIcon");
 volumeBar.addEventListener("input", () => {
   audio.volume = volumeBar.value;
 
@@ -146,7 +167,7 @@ volumeBar.addEventListener("input", () => {
     volumeIcon.textContent = "🔊";
   }
 });
-const volumeIcon = document.getElementById("volumeIcon");
+
 
 searchInput.addEventListener("input", filtrarCanciones);
 genreFilter.addEventListener("change", filtrarCanciones);
