@@ -61,7 +61,7 @@ function mostrarCanciones(lista) {
 
   songsContainer.innerHTML = lista.map((c, index) => `
     <article class="song-card">
-      <img src="${c.portada_url || 'https://via.placeholder.com/500x300?text=JAM'}" alt="Portada de ${c.titulo}">
+      <img src="${c.portada_url || 'Error al cargar la portada'}" alt="Portada de ${c.titulo}">
 
       <div class="song-content">
         <h3>${c.titulo}</h3>
@@ -73,7 +73,7 @@ function mostrarCanciones(lista) {
         </div>
 
         <div class="song-actions">
-          <button onclick="reproducirCancion(${index})">▶ Reproducir</button>
+          <button onclick='reproducirCancionPorUrl("${c.archivo_url}")'>▶ Reproducir</button>
           <a class="download-btn" href="${c.archivo_url}" download>⬇ Descargar</a>
         </div>
       </div>
@@ -137,9 +137,6 @@ prevBtn.addEventListener("click", () => {
   cancionActual = (cancionActual - 1 + canciones.length) % canciones.length; // PARA EVITAR QUE VAYA NUM NEGATIVO
   reproducirCancion(cancionActual);
 });
-
-
-
 
 
 audio.addEventListener("timeupdate", () => {
@@ -226,3 +223,24 @@ logoutBtn.addEventListener("click", () => {
 });
 
 cargarCanciones();
+
+
+
+
+
+function reproducirCancionPorUrl(url) {
+  const c = canciones.find(song => song.archivo_url === url);
+
+  if (!c) return;
+
+  audio.src = c.archivo_url;
+  audio.play();
+
+  playerTitle.textContent = c.titulo;
+  playerArtist.textContent = c.artista || "Artista desconocido";
+  playerCover.src = c.portada_url || "Error al cargar la foto";
+
+  playPauseBtn.textContent = "⏸";
+
+  cancionActual = canciones.indexOf(c);
+}
