@@ -169,11 +169,11 @@ themeBtn.addEventListener("click", () => {
 
   if (document.body.classList.contains("light")) {
     themeBtn.textContent = "☀︎";
-    logoImg.src = "foto2.png";
+    logoImg.src = "/imagenes/foto2.png";
 
   } else {
     themeBtn.textContent = "☾";
-    logoImg.src = "foto1.png";
+    logoImg.src = "/imagenes/foto1.png";
   }
 });
 

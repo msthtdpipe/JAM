@@ -6,9 +6,9 @@ exports.listar = async (req, res) => {
     const [rows] = await db.query(`
       SELECT c.id, c.titulo, c.duracion_seg, c.archivo_url, c.portada_url,
              a.nombre AS artista, al.titulo AS album, g.nombre AS genero
-      FROM canciones c
-      LEFT JOIN artistas a ON c.artista_id = a.id
-      LEFT JOIN albumes al ON c.album_id = al.id
+      FROM Canciones c
+      LEFT JOIN Artistas a ON c.artista_id = a.id
+      LEFT JOIN Albumes al ON c.album_id = al.id
       LEFT JOIN generos g ON c.genero_id = g.id
       WHERE c.publicada = TRUE
       ORDER BY c.subida_en DESC
